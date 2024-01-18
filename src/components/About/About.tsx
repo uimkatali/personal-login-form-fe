@@ -34,43 +34,46 @@ const About = () => {
       .catch(error => console.error('Error fetching users: ', error))
   }, [])
 
+  const cardRender = (user: UserData) => (
+    <Card
+      sx={{
+        color: '#F8F1E5',
+        background: '#E4D183',
+      }}
+    >
+      <CardContent>
+        <Typography gutterBottom variant="h5">
+          {user.name}
+        </Typography>
+      </CardContent>
+      <Divider orientation="horizontal" variant="middle" flexItem />
+      <CardMedia component="img" height="128" />
+      <CardContent>
+        <Typography gutterBottom variant="h6">
+          Descrierea produsului: {user.age}
+        </Typography>
+      </CardContent>
+      <Divider orientation="horizontal" variant="fullWidth" flexItem />
+      <CardActions>
+        <Button sx={{ color: '#9F609C' }} size="small" variant="text">
+          Buy Now
+        </Button>
+        <Divider orientation="vertical" variant="middle" flexItem />
+        <Button sx={{ color: '#9F609C' }} size="small" variant="text">
+          Details
+        </Button>
+      </CardActions>
+    </Card>
+  )
   return (
     <Grid container spacing={2} padding={2}>
       {(usersList.length > 0 ? usersList : mockData).map(user => (
         <Grid item key={user._id} xs={3}>
-          <Card
-            sx={{
-              color: '#F8F1E5',
-              background: '#E4D183',
-            }}
-          >
-            <CardContent>
-              <Typography gutterBottom variant="h5">
-                {user.name}
-              </Typography>
-            </CardContent>
-            <Divider orientation="horizontal" variant="middle" flexItem />
-            <CardMedia component="img" height="128" />
-            <CardContent>
-              <Typography gutterBottom variant="h6">
-                Descrierea produsului: {user.age}. asdasdasdasdasdasdasas
-              </Typography>
-            </CardContent>
-            <Divider orientation="horizontal" variant="fullWidth" flexItem />
-            <CardActions>
-              <Button sx={{ color: '#9F609C' }} size="small" variant="text">
-                Buy Now
-              </Button>
-              <Divider orientation="vertical" variant="middle" flexItem />
-              <Button sx={{ color: '#9F609C' }} size="small" variant="text">
-                Details
-              </Button>
-            </CardActions>
-          </Card>
+          {cardRender(user)}
         </Grid>
       ))}
 
-      <Typography sx={{ color: '#F8F1E5' }}> Loading... </Typography>
+      {isLoading && <Typography sx={{ color: 'coral' }}> Loading... </Typography>}
     </Grid>
   )
 }

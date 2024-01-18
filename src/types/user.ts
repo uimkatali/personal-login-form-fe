@@ -1,6 +1,6 @@
 export interface UserData {
-  _id: string;
-  name: string;
-  age: number;
-  role: string;
+  _id: string
+  name: string
+  age: string
+  role: string
 }
