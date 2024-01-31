@@ -1,21 +1,23 @@
-"use client";
-import { AppBar, Box, TextField } from "@mui/material";
+import { Button } from '@mui/material'
+import React, { useState } from 'react'
+import SignUpModal from './SignUpModal'
 
-import React from "react";
+const SignUp = () => {
+  const [isOpen, setIsOpen] = useState(false)
+  const handleIsOpen = () => {
+    setIsOpen(true)
+  }
 
-export default function SignUp() {
+  const handleIsClose = () => {
+    setIsOpen(false)
+  }
+
   return (
     <>
-      <Box
-        sx={{
-          background: "#9F609C",
-          color: "#EA8F79",
-        }}
-        width="100%"
-        height={"100%"}
-      >
-        <TextField variant="outlined" placeholder="Name"></TextField>
-      </Box>
+      <Button onClick={() => handleIsOpen()}>SignUp</Button>
+      {isOpen && <SignUpModal isOpen={isOpen} closeModal={() => handleIsClose()} />}
     </>
-  );
+  )
 }
+
+export default SignUp

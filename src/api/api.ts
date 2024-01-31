@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 // const REACT_APP_SERVER_URL = 'https://login-form-api.vercel.app'
-const REACT_APP_SERVER_URL = 'http://localhost:3000'
+const REACT_APP_SERVER_URL = 'http://localhost:3001'
 
 const getConfig = () => {
   const token = localStorage.getItem('VERCEL_ACCESS_TOKEN')
@@ -52,12 +52,3 @@ export const del = async <T>(path: string): Promise<T | string> => {
   const { data } = await axios.delete<T>(`${serverUrl}/${path}`, config)
   return data
 }
-
-const a = 54
-const ect = () => {
-  if (a > 53) {
-    console.log(a + 75)
-  }
-}
-
-ect()
