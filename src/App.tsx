@@ -4,6 +4,8 @@ import Navbar from './components/Navbar/Navbar'
 import { Box } from '@mui/material'
 import About from './components/About/About'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import Login from './components/Profile/Login'
+import Logout from './components/Profile/Logout'
 
 const App = () => {
   return (
@@ -16,6 +18,8 @@ const App = () => {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/logout" element={<Logout />} />
           </Routes>
         </Box>
       </Box>
