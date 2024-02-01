@@ -1,10 +1,17 @@
 import { AppBar, Button, Divider, Toolbar, Typography } from '@mui/material'
 import React from 'react'
 import { Link } from 'react-router-dom'
+import SignUp from '../Signup/Signup'
+import Login from '../Profile/Login'
+import Logout from '../Profile/Logout'
+import UserProfile from '../Profile/UserProfile'
 
 export default function Navbar() {
   return (
-    <AppBar sx={{ background: '#EA8F79', color: '#9F609C' }} position="relative">
+    <AppBar
+      sx={{ background: '#EA8F79', color: '#9F609C', paddingLeft: '3px', paddingRight: '3px' }}
+      position="relative"
+    >
       <Toolbar>
         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
           #LOGO
@@ -15,13 +22,17 @@ export default function Navbar() {
           </Link>
         </Button>
         <Divider orientation="vertical" variant="middle" flexItem />
-        <Button color="inherit">
+        <Button title="Get more info" color="inherit">
           <Link to={'/about'}>About</Link>
         </Button>
         <Divider orientation="vertical" variant="middle" flexItem />
-        <Button color="inherit">
-          <Link to={'/signup'}>Sign Up</Link>
-        </Button>
+        <SignUp />
+        <Divider orientation="vertical" variant="middle" flexItem />
+        <Login />
+        <Divider orientation="vertical" variant="middle" flexItem />
+        <Logout />
+        <Divider orientation="vertical" variant="middle" flexItem />
+        <UserProfile />
       </Toolbar>
     </AppBar>
   )

@@ -2,9 +2,10 @@ import React from 'react'
 import Home from './components/Home/Home'
 import Navbar from './components/Navbar/Navbar'
 import { Box } from '@mui/material'
-import Signup from './components/Signup/Signup'
 import About from './components/About/About'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import Login from './components/Profile/Login'
+import Logout from './components/Profile/Logout'
 
 const App = () => {
   return (
@@ -17,7 +18,8 @@ const App = () => {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
-            <Route path="/signup" element={<Signup />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/logout" element={<Logout />} />
           </Routes>
         </Box>
       </Box>
