@@ -1,5 +1,5 @@
-'use client'
 import {
+  Box,
   Button,
   Card,
   CardActions,
@@ -7,6 +7,7 @@ import {
   CardMedia,
   Divider,
   Grid,
+  TextField,
   Typography,
 } from '@mui/material'
 import { useEffect, useState } from 'react'
@@ -18,20 +19,21 @@ import { MOCK } from '../../MOCKDATA'
 const About = () => {
   const [usersList, setUsersList] = useState<UserData[]>([])
   const [isLoading, setIsLoading] = useState(true)
-
+  const [filter, setFilter] = useState('')
   const mockData = MOCK.map(mockItem => mockItem)
 
   useEffect(() => {
+    setIsLoading(true)
     getAllUsers()
-      .then(response => {
-        setUsersList(
-          response.sort((a, b) => {
-            return a.role.localeCompare(b.role)
-          })
-        )
+      .then(response => response)
+      .then(data => {
+        setUsersList(data)
         setIsLoading(false)
       })
-      .catch(error => console.error('Error fetching users: ', error))
+      .catch(error => {
+        console.error('Error fetching users: ', error)
+        setIsLoading(false)
+      })
   }, [])
 
   const cardRender = (user: UserData) => (
@@ -65,10 +67,25 @@ const About = () => {
       </CardActions>
     </Card>
   )
+
+  const filteredData = usersList.filter(filteredUser =>
+    filteredUser.name.toLowerCase().includes(filter.toLowerCase())
+  )
+
   return (
     <Grid container spacing={2} padding={2}>
-      {(usersList.length > 0 ? usersList : mockData).map(user => (
-        <Grid item key={user._id} xs={3}>
+      <Box>
+        <TextField
+          id="standard-basic"
+          label="Search..."
+          variant="standard"
+          value={filter}
+          onChange={e => setFilter(e.target.value)}
+        />
+      </Box>
+
+      {(filteredData.length > 0 ? filteredData : mockData).map(user => (
+        <Grid item key={user._id}>
           {cardRender(user)}
         </Grid>
       ))}
