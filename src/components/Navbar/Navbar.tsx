@@ -5,6 +5,7 @@ import SignUp from '../Signup/Signup'
 import Login from '../Profile/Login'
 import Logout from '../Profile/Logout'
 import UserProfile from '../Profile/UserProfile'
+import SwitchTheme from '../UIMode/SwitchTheme'
 
 export default function Navbar() {
   return (
@@ -33,6 +34,8 @@ export default function Navbar() {
         <Logout />
         <Divider orientation="vertical" variant="middle" flexItem />
         <UserProfile />
+        <Divider orientation="vertical" variant="middle" flexItem />
+        <SwitchTheme />
       </Toolbar>
     </AppBar>
   )
