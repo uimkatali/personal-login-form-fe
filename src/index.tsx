@@ -4,6 +4,7 @@ import App from './App'
 import store from './redux/store/store'
 import { Provider } from 'react-redux'
 import { Auth0Provider } from '@auth0/auth0-react'
+import UIModeProvider from './components/UIMode/UIModeProvider'
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 root.render(
@@ -14,7 +15,9 @@ root.render(
       authorizationParams={{ redirect_uri: window.location.origin }}
     >
       <Provider store={store}>
-        <App />
+        <UIModeProvider>
+          <App />
+        </UIModeProvider>
       </Provider>
     </Auth0Provider>
   </React.StrictMode>
