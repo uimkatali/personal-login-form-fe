@@ -17,7 +17,7 @@ const App = () => {
         <Box>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
+            <Route path="/about" element={<About filter={''} />} /> //TODO-Add slice for this filter
             <Route path="/login" element={<Login />} />
             <Route path="/logout" element={<Logout />} />
           </Routes>
