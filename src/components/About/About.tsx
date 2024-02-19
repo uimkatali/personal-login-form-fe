@@ -16,10 +16,13 @@ import { UserData } from '../../types/user'
 import React from 'react'
 import { MOCK } from '../../MOCKDATA'
 
-const About = () => {
+interface AboutProps {
+  filter: string
+}
+
+const About = ({ filter }: AboutProps) => {
   const [usersList, setUsersList] = useState<UserData[]>([])
   const [isLoading, setIsLoading] = useState(true)
-  const [filter, setFilter] = useState('')
   const mockData = MOCK.map(mockItem => mockItem)
 
   useEffect(() => {
@@ -74,16 +77,6 @@ const About = () => {
 
   return (
     <Grid container spacing={2} padding={2}>
-      <Box>
-        <TextField
-          id="standard-basic"
-          label="Search..."
-          variant="standard"
-          value={filter}
-          onChange={e => setFilter(e.target.value)}
-        />
-      </Box>
-
       {(filteredData.length > 0 ? filteredData : mockData).map(user => (
         <Grid item key={user._id}>
           {cardRender(user)}

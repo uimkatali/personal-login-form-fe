@@ -1,13 +1,14 @@
-import { AppBar, Button, Divider, Toolbar, Typography } from '@mui/material'
-import React from 'react'
+import { AppBar, Box, Button, Divider, TextField, Toolbar, Typography } from '@mui/material'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import SignUp from '../Signup/Signup'
 import Login from '../Profile/Login'
 import Logout from '../Profile/Logout'
 import UserProfile from '../Profile/UserProfile'
 import SwitchTheme from '../UIMode/SwitchTheme'
 
 export default function Navbar() {
+  const [filter, setFilter] = useState('')
+
   return (
     <AppBar
       sx={{ background: '#EA8F79', color: '#9F609C', paddingLeft: '3px', paddingRight: '3px' }}
@@ -27,8 +28,6 @@ export default function Navbar() {
           <Link to={'/about'}>About</Link>
         </Button>
         <Divider orientation="vertical" variant="middle" flexItem />
-        <SignUp />
-        <Divider orientation="vertical" variant="middle" flexItem />
         <Login />
         <Divider orientation="vertical" variant="middle" flexItem />
         <Logout />
@@ -36,6 +35,16 @@ export default function Navbar() {
         <UserProfile />
         <Divider orientation="vertical" variant="middle" flexItem />
         <SwitchTheme />
+        <Divider orientation="vertical" variant="middle" flexItem />
+        <Box>
+          <TextField
+            id="standard-basic"
+            label="Search..."
+            variant="standard"
+            value={filter}
+            onChange={e => setFilter(e.target.value)}
+          />
+        </Box>
       </Toolbar>
     </AppBar>
   )
