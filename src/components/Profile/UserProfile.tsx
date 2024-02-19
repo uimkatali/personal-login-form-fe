@@ -1,4 +1,5 @@
 import { useAuth0 } from '@auth0/auth0-react'
+import { Avatar, Typography } from '@mui/material'
 
 const UserProfile = () => {
   const { user, isAuthenticated, isLoading } = useAuth0()
@@ -10,9 +11,9 @@ const UserProfile = () => {
   return (
     isAuthenticated && (
       <div>
-        <img src={user && user.picture} alt={user && user.name} />
-        <h2>{user && user.name}</h2>
-        <h1>{user && user.email}</h1>
+        <Avatar src={user && user.picture} alt={user && user.name} />
+        <Typography variant="h6">{user && user.name}</Typography>
+        <Typography variant="body2">{user && user.email}</Typography>
       </div>
     )
   )
