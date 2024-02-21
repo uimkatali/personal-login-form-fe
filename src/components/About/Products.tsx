@@ -15,12 +15,15 @@ import { getAllUsers } from '../../api/users'
 import { UserData } from '../../types/user'
 import React from 'react'
 import { MOCK } from '../../MOCKDATA'
+import { useTranslation } from 'react-i18next'
+import { TRANSLATION_KEYS } from '../../i18n/translationKeys'
 
 interface AboutProps {
   filter: string
 }
 
-const About = ({ filter }: AboutProps) => {
+const Products = ({ filter }: AboutProps) => {
+  const { t } = useTranslation()
   const [usersList, setUsersList] = useState<UserData[]>([])
   const [isLoading, setIsLoading] = useState(true)
   const mockData = MOCK.map(mockItem => mockItem)
@@ -48,6 +51,7 @@ const About = ({ filter }: AboutProps) => {
     >
       <CardContent>
         <Typography gutterBottom variant="h5">
+          {t(TRANSLATION_KEYS.NAME)}
           {user.name}
         </Typography>
       </CardContent>
@@ -55,17 +59,18 @@ const About = ({ filter }: AboutProps) => {
       <CardMedia component="img" height="128" loading="lazy" />
       <CardContent>
         <Typography gutterBottom variant="h6">
-          Descrierea produsului: {user.age}
+          {t(TRANSLATION_KEYS.DETAILS)}
+          {user.age}
         </Typography>
       </CardContent>
       <Divider orientation="horizontal" variant="fullWidth" flexItem />
       <CardActions>
         <Button sx={{ color: '#9F609C' }} size="small" variant="text">
-          Buy Now
+          {t(TRANSLATION_KEYS.BUYNOW)}
         </Button>
         <Divider orientation="vertical" variant="middle" flexItem />
         <Button sx={{ color: '#9F609C' }} size="small" variant="text">
-          Details
+          {t(TRANSLATION_KEYS.DETAILS)}
         </Button>
       </CardActions>
     </Card>
@@ -83,9 +88,11 @@ const About = ({ filter }: AboutProps) => {
         </Grid>
       ))}
 
-      {isLoading && <Typography sx={{ color: 'coral' }}> Loading... </Typography>}
+      {isLoading && (
+        <Typography sx={{ color: 'coral' }}> {t(TRANSLATION_KEYS.LOADING)} </Typography>
+      )}
     </Grid>
   )
 }
 
-export default About
+export default Products
