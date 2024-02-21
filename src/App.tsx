@@ -5,7 +5,6 @@ import { Box } from '@mui/material'
 import Products from './components/About/Products'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import Login from './components/Profile/Login'
-import Logout from './components/Profile/Logout'
 
 const App = () => {
   return (
@@ -20,7 +19,7 @@ const App = () => {
             <Route path="/about" element={<Products filter={''} />} /> //TODO-Add slice for this
             filter
             <Route path="/login" element={<Login />} />
-            <Route path="/logout" element={<Logout />} />
+            <Route path="/logout" />
           </Routes>
         </Box>
       </Box>

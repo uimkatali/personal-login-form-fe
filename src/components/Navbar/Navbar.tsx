@@ -2,7 +2,6 @@ import { AppBar, Box, Button, ButtonGroup, TextField, Toolbar, Typography } from
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import Login from '../Profile/Login'
-import Logout from '../Profile/Logout'
 import UserProfile from '../Profile/UserProfile'
 import SwitchTheme from '../UIMode/SwitchTheme'
 import { useTranslation } from 'react-i18next'
@@ -30,7 +29,7 @@ export default function Navbar() {
           <Button title="Get more info" color="inherit">
             <Link to={'/about'}>{t(TRANSLATION_KEYS.PRODUCTS)}</Link>
           </Button>
-          {isAuthenticated ? <Logout /> : <Login />}
+          {isAuthenticated && <Login />}
         </ButtonGroup>
         <Box>
           <TextField

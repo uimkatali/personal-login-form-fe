@@ -3,11 +3,10 @@ import { useAuth0 } from '@auth0/auth0-react'
 import { Avatar, IconButton, Menu, MenuItem, Typography } from '@mui/material'
 import { useTranslation } from 'react-i18next'
 import React from 'react'
-import Logout from './Logout'
 
 const UserProfile = () => {
   const { t } = useTranslation()
-  const { user, isAuthenticated, isLoading } = useAuth0()
+  const { user, isAuthenticated, isLoading, logout } = useAuth0()
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
 
   const handleOpenUserProfile = (event: React.MouseEvent<HTMLElement>) => {
@@ -25,7 +24,7 @@ const UserProfile = () => {
     isAuthenticated && (
       <>
         <IconButton onClick={handleOpenUserProfile} size="small">
-          <Avatar sx={{ width: 32, height: 32 }}>{user && user.picture}</Avatar>
+          <Avatar src={user && user.picture} sx={{ width: 32, height: 32 }}></Avatar>
         </IconButton>
         <Menu anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleCloseUserProfile}>
           <MenuItem onClick={handleCloseUserProfile} key={user && user.name}>
@@ -37,8 +36,8 @@ const UserProfile = () => {
           <MenuItem onClick={handleCloseUserProfile}>
             <Avatar sx={{ width: 32, height: 32 }}>{user && user.picture}</Avatar>
           </MenuItem>
-          <MenuItem onClick={handleCloseUserProfile}>
-            <Logout />
+          <MenuItem onClick={() => logout({ logoutParams: { returnTo: '/logout' } })}>
+            {t(TRANSLATION_KEYS.LOGOUT)}
           </MenuItem>
         </Menu>
       </>
