@@ -4,7 +4,7 @@ import React from 'react'
 import { useTranslation } from 'react-i18next'
 export default function Home() {
   const { t } = useTranslation()
-  const { user, isAuthenticated } = useAuth0()
+  const { user } = useAuth0()
   return (
     <>
       <h1>{t(TRANSLATION_KEYS.HOME)} </h1>
