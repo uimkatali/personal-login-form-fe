@@ -1,0 +1,16 @@
+export const TRANSLATION_KEYS = {
+  HOME: 'home',
+  HELLO: 'hello',
+  NAI: 'nai',
+  PRODUCTS: 'products',
+  DARK: 'dark',
+  LIGHT: 'light',
+  SEARCH: 'search',
+  LOGIN: 'login',
+  LOGOUT: 'logout',
+  DETAILS: 'details',
+  NAME: 'name',
+  DESCRIPTION: 'description',
+  BUYNOW: 'buynow',
+  LOADING: 'loading',
+}

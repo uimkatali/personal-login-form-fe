@@ -5,8 +5,11 @@ import Login from '../Profile/Login'
 import Logout from '../Profile/Logout'
 import UserProfile from '../Profile/UserProfile'
 import SwitchTheme from '../UIMode/SwitchTheme'
+import { useTranslation } from 'react-i18next'
+import { TRANSLATION_KEYS } from '../../i18n/translationKeys'
 
 export default function Navbar() {
+  const { t } = useTranslation()
   const [filter, setFilter] = useState('')
 
   return (
@@ -16,16 +19,16 @@ export default function Navbar() {
     >
       <Toolbar>
         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-          #LOGO
+          {t(TRANSLATION_KEYS.NAI)}
         </Typography>
         <Button color="inherit">
           <Link style={{ paddingLeft: '5px' }} to={'/'}>
-            Home
+            {t(TRANSLATION_KEYS.HOME)}
           </Link>
         </Button>
         <Divider orientation="vertical" variant="middle" flexItem />
         <Button title="Get more info" color="inherit">
-          <Link to={'/about'}>About</Link>
+          <Link to={'/about'}>{t(TRANSLATION_KEYS.PRODUCTS)}</Link>
         </Button>
         <Divider orientation="vertical" variant="middle" flexItem />
         <Login />

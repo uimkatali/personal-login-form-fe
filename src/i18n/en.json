@@ -1,0 +1,17 @@
+{
+    "welcome":"Welcome, everyone!",
+    "hello":"Hello, {{name}}",
+    "home": "This the home page",
+    "nai": "NAI",
+    "products":"Products",
+    "dark":"Dark",
+    "light":"Light",
+    "search":"Search...",
+    "login":"Login",
+    "logout":"Logout",
+    "details":"Details ",
+    "name":"Name: ",
+    "description":"Description",
+    "buynow":"Buy now",
+    "loading":"Loading..."
+}
