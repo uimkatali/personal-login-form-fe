@@ -17,7 +17,8 @@ const UserProfile = () => {
   }
 
   const userData: MenuItemData = {
-    rightIcon: <Avatar alt={user && user.name} src={user && user.picture} />,
+    label: user && user.picture,
+    rightIcon: user && user.picture,
     items: [
       {
         label: user && user.name,
