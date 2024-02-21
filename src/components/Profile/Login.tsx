@@ -6,7 +6,11 @@ import { useTranslation } from 'react-i18next'
 const Login = () => {
   const { t } = useTranslation()
   const { loginWithRedirect } = useAuth0()
-  return <Button onClick={() => loginWithRedirect()}>{t(TRANSLATION_KEYS.LOGIN)}</Button>
+  return (
+    <Button sx={{ color: 'inherit' }} onClick={() => loginWithRedirect()}>
+      {t(TRANSLATION_KEYS.LOGIN)}
+    </Button>
+  )
 }
 
 export default Login

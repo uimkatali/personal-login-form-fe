@@ -32,7 +32,7 @@ export default function Navbar() {
         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
           {t(TRANSLATION_KEYS.NAI)}
         </Typography>
-        <ButtonGroup variant="outlined">
+        <ButtonGroup variant="text">
           <Button color="inherit">
             <Link to={'/'}>{t(TRANSLATION_KEYS.HOME)}</Link>
           </Button>

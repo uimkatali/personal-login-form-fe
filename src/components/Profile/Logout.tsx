@@ -7,7 +7,10 @@ const Logout = () => {
   const { t } = useTranslation()
   const { logout } = useAuth0()
   return (
-    <Button onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}>
+    <Button
+      sx={{ color: 'inherit' }}
+      onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}
+    >
       {t(TRANSLATION_KEYS.LOGOUT)}
     </Button>
   )
