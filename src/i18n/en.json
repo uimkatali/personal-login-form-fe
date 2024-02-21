@@ -1,7 +1,7 @@
 {
     "welcome":"Welcome, everyone!",
     "hello":"Hello, {{name}}",
-    "home": "This the home page",
+    "home": "Home",
     "nai": "NAI",
     "products":"Products",
     "dark":"Dark",
