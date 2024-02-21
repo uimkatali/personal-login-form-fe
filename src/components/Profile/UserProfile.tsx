@@ -1,18 +1,7 @@
 import { TRANSLATION_KEYS } from '../../i18n/translationKeys'
 import { useAuth0 } from '@auth0/auth0-react'
-import {
-  Avatar,
-  Container,
-  Divider,
-  Icon,
-  IconButton,
-  Menu,
-  MenuItem,
-  Typography,
-} from '@mui/material'
-import { useState } from 'react'
+import { Avatar, IconButton, Menu, MenuItem, Typography } from '@mui/material'
 import { useTranslation } from 'react-i18next'
-import AccountCircle from '@mui/icons-material/AccountCircle'
 import React from 'react'
 import Logout from './Logout'
 
