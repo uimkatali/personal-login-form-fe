@@ -6,7 +6,7 @@ import React from 'react'
 
 const UserProfile = () => {
   const { t } = useTranslation()
-  const { user, isAuthenticated, isLoading, logout } = useAuth0()
+  const { user, isAuthenticated, isLoading, logout, loginWithRedirect } = useAuth0()
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
 
   const handleOpenUserProfile = (event: React.MouseEvent<HTMLElement>) => {
@@ -21,11 +21,11 @@ const UserProfile = () => {
   }
 
   return (
-    isAuthenticated && (
-      <>
-        <IconButton onClick={handleOpenUserProfile} size="small">
-          <Avatar src={user && user.picture} sx={{ width: 32, height: 32 }}></Avatar>
-        </IconButton>
+    <>
+      <IconButton onClick={handleOpenUserProfile} size="small">
+        <Avatar src={user && user.picture} sx={{ width: 32, height: 32 }}></Avatar>
+      </IconButton>
+      {isAuthenticated ? (
         <Menu anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleCloseUserProfile}>
           <MenuItem onClick={handleCloseUserProfile} key={user && user.name}>
             <Typography>{user && user.name}</Typography>
@@ -34,14 +34,16 @@ const UserProfile = () => {
             <Typography>{user && user.email}</Typography>
           </MenuItem>
           <MenuItem onClick={handleCloseUserProfile}>
-            <Avatar sx={{ width: 32, height: 32 }}>{user && user.picture}</Avatar>
+            <Avatar sx={{ width: 24, height: 24 }}>{user && user.picture}</Avatar>
           </MenuItem>
-          <MenuItem onClick={() => logout({ logoutParams: { returnTo: '/logout' } })}>
-            {t(TRANSLATION_KEYS.LOGOUT)}
-          </MenuItem>
+          <MenuItem onClick={() => logout()}>{t(TRANSLATION_KEYS.LOGOUT)}</MenuItem>
         </Menu>
-      </>
-    )
+      ) : (
+        <Menu anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleCloseUserProfile}>
+          <MenuItem onClick={() => loginWithRedirect()}>{t(TRANSLATION_KEYS.LOGIN)}</MenuItem>
+        </Menu>
+      )}
+    </>
   )
 }
 

@@ -29,7 +29,7 @@ export default function Navbar() {
           <Button title="Get more info" color="inherit">
             <Link to={'/about'}>{t(TRANSLATION_KEYS.PRODUCTS)}</Link>
           </Button>
-          {isAuthenticated && <Login />}
+          {!isAuthenticated && <Login />}
         </ButtonGroup>
         <Box>
           <TextField
