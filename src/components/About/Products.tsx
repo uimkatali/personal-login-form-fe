@@ -15,6 +15,8 @@ import React from 'react'
 import { MOCK } from '../../MOCKDATA'
 import { useTranslation } from 'react-i18next'
 import { TRANSLATION_KEYS } from '../../i18n/translationKeys'
+import { generateUniqueKey } from '../../utils/generateUniqueKey'
+import useTheme from '@mui/material/styles/useTheme'
 
 interface AboutProps {
   filter: string
@@ -25,6 +27,7 @@ const Products = ({ filter }: AboutProps) => {
   const [usersList, setUsersList] = useState<UserData[]>([])
   const [isLoading, setIsLoading] = useState(true)
   const mockData = MOCK.map(mockItem => mockItem)
+  const theme = useTheme()
 
   useEffect(() => {
     setIsLoading(true)
@@ -43,8 +46,8 @@ const Products = ({ filter }: AboutProps) => {
   const cardRender = (user: UserData) => (
     <Card
       sx={{
-        color: '#F8F1E5',
-        background: '#E4D183',
+        color: theme.palette.secondary.main,
+        background: theme.palette.primary.main,
       }}
     >
       <CardContent>
@@ -63,11 +66,11 @@ const Products = ({ filter }: AboutProps) => {
       </CardContent>
       <Divider orientation="horizontal" variant="fullWidth" flexItem />
       <CardActions>
-        <Button sx={{ color: '#9F609C' }} size="small" variant="text">
+        <Button sx={{ color: theme.palette.success.main }} size="small" variant="text">
           {t(TRANSLATION_KEYS.BUYNOW)}
         </Button>
         <Divider orientation="vertical" variant="middle" flexItem />
-        <Button sx={{ color: '#9F609C' }} size="small" variant="text">
+        <Button sx={{ color: theme.palette.info.main }} size="small" variant="text">
           {t(TRANSLATION_KEYS.DETAILS)}
         </Button>
       </CardActions>
@@ -81,13 +84,15 @@ const Products = ({ filter }: AboutProps) => {
   return (
     <Grid container spacing={2} padding={2}>
       {(filteredData.length > 0 ? filteredData : mockData).map(user => (
-        <Grid item key={user._id}>
+        <Grid item key={generateUniqueKey()}>
           {cardRender(user)}
         </Grid>
       ))}
 
       {isLoading && (
-        <Typography sx={{ color: 'coral' }}> {t(TRANSLATION_KEYS.LOADING)} </Typography>
+        <Typography sx={{ color: theme.palette.warning.main }}>
+          {t(TRANSLATION_KEYS.LOADING)}
+        </Typography>
       )}
     </Grid>
   )

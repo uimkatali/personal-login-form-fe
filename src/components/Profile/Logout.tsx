@@ -9,5 +9,5 @@ export const Logout = () => {
 
   handleLogout()
 
-  return <Typography>Logging out...</Typography>
+  return <Typography sx={{ color: theme.palette.secondary.main }}>Logging out...</Typography>
 }

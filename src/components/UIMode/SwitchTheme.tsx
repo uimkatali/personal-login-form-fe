@@ -5,7 +5,7 @@ const SwitchTheme = () => {
   const { uiMode, toggleUIMode } = useUIModeContext()
 
   return (
-    <IconButton value={uiMode} onClick={toggleUIMode}>
+    <IconButton sx={{ color: { uiMode } }} value={uiMode} onClick={toggleUIMode}>
       {uiMode}
     </IconButton>
   )
