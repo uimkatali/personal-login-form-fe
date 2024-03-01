@@ -24,7 +24,7 @@ export default function Navbar() {
         color: theme.palette.secondary.main,
         backgroundColor: theme.palette.primary.main,
       }}
-      position="static"
+      position="sticky"
     >
       <Toolbar>
         <Typography

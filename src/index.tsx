@@ -12,7 +12,6 @@ import { ThemeProvider, unstable_createMuiStrictModeTheme } from '@mui/material/
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 
 const theme = unstable_createMuiStrictModeTheme()
-
 root.render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
