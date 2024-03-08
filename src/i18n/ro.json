@@ -1,0 +1,18 @@
+{
+    "welcome":"Salutare, tuturor!",
+    "hello":"Salut, {{name}}",
+    "home": "Acasa",
+    "nai": "NAI",
+    "products":"Produse",
+    "dark":"Intunecat",
+    "light":"Luminat",
+    "search":"Cautare...",
+    "login":"Logare",
+    "logout":"Delogare",
+    "profile":"Profil",
+    "details":"Detalii ",
+    "name":"Nume: ",
+    "description":"Descriere",
+    "buynow":"Cumpara acum",
+    "loading":"Incarcare..."
+}

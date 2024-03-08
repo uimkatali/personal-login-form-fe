@@ -1,7 +1,10 @@
 import { UIModeContextType } from '@/types/context'
 import { createContext, useContext } from 'react'
 
-export const UIModeContext = createContext<UIModeContextType | undefined>(undefined)
+export const UIModeContext = createContext<UIModeContextType>({
+  uiMode: 'light',
+  toggleUIMode: () => {},
+})
 
 export const useUIModeContext = () => {
   const context = useContext(UIModeContext)

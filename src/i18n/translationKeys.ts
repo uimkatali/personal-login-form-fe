@@ -8,6 +8,7 @@ export const TRANSLATION_KEYS = {
   SEARCH: 'search',
   LOGIN: 'login',
   LOGOUT: 'logout',
+  PROFILE: 'profile',
   DETAILS: 'details',
   NAME: 'name',
   DESCRIPTION: 'description',

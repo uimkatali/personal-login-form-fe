@@ -2,7 +2,8 @@ import { UIModeProviderProps } from '@/types/context'
 import { UIModeContext } from '../../utils/uiModeContext/uiModeContext'
 import { useState } from 'react'
 import { ThemeProvider } from '@mui/material/styles'
-import { ThemeContext } from '../../utils/uiModeContext/uiModePalette'
+import lightTheme from '../../utils/uiModeContext/lightTheme'
+import darkTheme from '../../utils/uiModeContext/darkTheme'
 
 const UIModeProvider = ({ children }: UIModeProviderProps) => {
   const [uiMode, setUIMode] = useState('light')
@@ -12,7 +13,7 @@ const UIModeProvider = ({ children }: UIModeProviderProps) => {
 
   return (
     <UIModeContext.Provider value={{ uiMode, toggleUIMode }}>
-      <ThemeProvider theme={ThemeContext}> {children}</ThemeProvider>
+      <ThemeProvider theme={uiMode === 'light' ? lightTheme : darkTheme}> {children}</ThemeProvider>
     </UIModeContext.Provider>
   )
 }
