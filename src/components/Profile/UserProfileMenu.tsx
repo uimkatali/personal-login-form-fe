@@ -3,12 +3,14 @@ import { useAuth0 } from '@auth0/auth0-react'
 import { Avatar, IconButton, Menu, MenuItem, Typography, useTheme } from '@mui/material'
 import { useTranslation } from 'react-i18next'
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const UserProfileMenu = () => {
   const { t } = useTranslation()
   const { user, isAuthenticated, isLoading, logout, loginWithRedirect } = useAuth0()
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
   const theme = useTheme()
+  const navigate = useNavigate()
   const handleOpenUserProfile = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget)
   }
@@ -36,6 +38,7 @@ const UserProfileMenu = () => {
           onClose={handleCloseUserProfile}
         >
           <MenuItem
+            disabled
             sx={{ color: theme.palette.secondary.main }}
             onClick={handleCloseUserProfile}
             key={user && user.name}
@@ -46,15 +49,20 @@ const UserProfileMenu = () => {
           </MenuItem>
           <MenuItem
             sx={{ color: theme.palette.secondary.main }}
-            onClick={handleCloseUserProfile}
-            key={user && user.email}
+            onClick={() => {
+              navigate('/profile')
+              handleCloseUserProfile()
+            }}
           >
-            <Typography>{user && user.email}</Typography>
-          </MenuItem>
-          <MenuItem sx={{ color: theme.palette.secondary.main }} onClick={handleCloseUserProfile}>
             {t(TRANSLATION_KEYS.PROFILE)}
           </MenuItem>
-          <MenuItem sx={{ color: theme.palette.secondary.main }} onClick={() => logout()}>
+          <MenuItem
+            sx={{ color: theme.palette.secondary.main }}
+            onClick={() => {
+              logout()
+              handleCloseUserProfile()
+            }}
+          >
             {t(TRANSLATION_KEYS.LOGOUT)}
           </MenuItem>
         </Menu>

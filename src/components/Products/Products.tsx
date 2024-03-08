@@ -82,9 +82,9 @@ const Products = ({ filter }: AboutProps) => {
   )
 
   return (
-    <Grid container spacing={2} padding={2}>
+    <Grid container sx={{ width: '450px', margin: '0 auto' }}>
       {(filteredData.length > 0 ? filteredData : mockData).map(user => (
-        <Grid item key={generateUniqueKey()}>
+        <Grid item xs={4} sm={6} md={4} lg={3} key={generateUniqueKey()}>
           {cardRender(user)}
         </Grid>
       ))}
