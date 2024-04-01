@@ -13,7 +13,7 @@ import { useTheme } from '@mui/material'
 export default function Navbar() {
   const { t } = useTranslation()
   const theme = useTheme()
-  const [filter, setFilter] = useState('')
+  // const [filter, setFilter] = useState('')
   const { isAuthenticated } = useAuth0()
   const navigate = useNavigate()
 
@@ -49,7 +49,7 @@ export default function Navbar() {
           </Button>
           {!isAuthenticated && <Login />}
         </ButtonGroup>
-        <Box>
+        {/* <Box>
           <TextField
             id="standard-basic"
             label="Search..."
@@ -58,7 +58,7 @@ export default function Navbar() {
             sx={{ color: theme.palette.secondary.main }}
             onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFilter(e.target.value)}
           />
-        </Box>
+        </Box> */}
         <SwitchTheme />
         <UserProfileMenu />
       </Toolbar>

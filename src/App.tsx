@@ -16,7 +16,9 @@ const App = () => {
     <Router>
       <GlobalStyles
         styles={{
-          body: { height: '100%', width: '100%', backgroundColor: theme.palette.secondary.main },
+          body: {
+            backgroundColor: theme.palette.secondary.main,
+          },
         }}
       />
       <Navbar />

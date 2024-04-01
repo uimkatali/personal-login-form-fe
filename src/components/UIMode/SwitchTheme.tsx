@@ -1,5 +1,6 @@
 import { IconButton } from '@mui/material'
 import { useUIModeContext } from '../../utils/uiModeContext/uiModeContext'
+import React from 'react'
 
 const SwitchTheme = () => {
   const { uiMode, toggleUIMode } = useUIModeContext()
