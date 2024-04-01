@@ -8,13 +8,15 @@ import {
   Grid,
   Typography,
 } from '@mui/material'
-import { useEffect, useState } from 'react'
 import { getAllUsers } from '../../api/users'
 import { UserData } from '../../types/user'
-import React from 'react'
 import { MOCK } from '../../MOCKDATA'
 import { useTranslation } from 'react-i18next'
 import { TRANSLATION_KEYS } from '../../i18n/translationKeys'
+import { generateUniqueKey } from '../../utils/generateUniqueKey'
+import useTheme from '@mui/material/styles/useTheme'
+import { useEffect, useState } from 'react'
+import React from 'react'
 
 interface AboutProps {
   filter: string
@@ -25,6 +27,7 @@ const Products = ({ filter }: AboutProps) => {
   const [usersList, setUsersList] = useState<UserData[]>([])
   const [isLoading, setIsLoading] = useState(true)
   const mockData = MOCK.map(mockItem => mockItem)
+  const theme = useTheme()
 
   useEffect(() => {
     setIsLoading(true)
@@ -43,8 +46,8 @@ const Products = ({ filter }: AboutProps) => {
   const cardRender = (user: UserData) => (
     <Card
       sx={{
-        color: '#F8F1E5',
-        background: '#E4D183',
+        color: theme.palette.secondary.main,
+        background: theme.palette.primary.main,
       }}
     >
       <CardContent>
@@ -63,31 +66,33 @@ const Products = ({ filter }: AboutProps) => {
       </CardContent>
       <Divider orientation="horizontal" variant="fullWidth" flexItem />
       <CardActions>
-        <Button sx={{ color: '#9F609C' }} size="small" variant="text">
+        <Button sx={{ color: theme.palette.success.main }} size="small" variant="text">
           {t(TRANSLATION_KEYS.BUYNOW)}
         </Button>
         <Divider orientation="vertical" variant="middle" flexItem />
-        <Button sx={{ color: '#9F609C' }} size="small" variant="text">
+        <Button sx={{ color: theme.palette.info.main }} size="small" variant="text">
           {t(TRANSLATION_KEYS.DETAILS)}
         </Button>
       </CardActions>
     </Card>
   )
 
-  const filteredData = usersList.filter(filteredUser =>
+  const filteredData = usersList.filter((filteredUser: { name: string }) =>
     filteredUser.name.toLowerCase().includes(filter.toLowerCase())
   )
 
   return (
-    <Grid container spacing={2} padding={2}>
-      {(filteredData.length > 0 ? filteredData : mockData).map(user => (
-        <Grid item key={user._id}>
+    <Grid container spacing={2}>
+      {(filteredData.length > 0 ? filteredData : mockData).map((user: UserData) => (
+        <Grid item xs={9 / 3} key={generateUniqueKey()}>
           {cardRender(user)}
         </Grid>
       ))}
 
       {isLoading && (
-        <Typography sx={{ color: 'coral' }}> {t(TRANSLATION_KEYS.LOADING)} </Typography>
+        <Typography sx={{ color: theme.palette.warning.main }}>
+          {t(TRANSLATION_KEYS.LOADING)}
+        </Typography>
       )}
     </Grid>
   )

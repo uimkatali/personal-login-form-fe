@@ -1,19 +1,15 @@
-import { TRANSLATION_KEYS } from '../../i18n/translationKeys'
 import { useAuth0 } from '@auth0/auth0-react'
-import { Button } from '@mui/material'
-import { useTranslation } from 'react-i18next'
+import { Typography, useTheme } from '@mui/material'
+import React from 'react'
 
-const Logout = () => {
-  const { t } = useTranslation()
+export const Logout = () => {
   const { logout } = useAuth0()
-  return (
-    <Button
-      sx={{ color: 'inherit' }}
-      onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}
-    >
-      {t(TRANSLATION_KEYS.LOGOUT)}
-    </Button>
-  )
-}
+  const theme = useTheme()
+  const handleLogout = async () => {
+    await logout()
+  }
 
-export default Logout
+  handleLogout()
+
+  return <Typography sx={{ color: theme.palette.secondary.main }}>Logging out...</Typography>
+}

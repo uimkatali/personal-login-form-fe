@@ -1,48 +1,66 @@
 import { AppBar, Box, Button, ButtonGroup, TextField, Toolbar, Typography } from '@mui/material'
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import * as React from 'react'
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import Login from '../Profile/Login'
-import Logout from '../Profile/Logout'
-import UserProfile from '../Profile/UserProfile'
+import UserProfileMenu from '../Profile/UserProfileMenu'
 import SwitchTheme from '../UIMode/SwitchTheme'
 import { useTranslation } from 'react-i18next'
 import { TRANSLATION_KEYS } from '../../i18n/translationKeys'
 import { useAuth0 } from '@auth0/auth0-react'
+import { useTheme } from '@mui/material'
 
 export default function Navbar() {
   const { t } = useTranslation()
+  const theme = useTheme()
   const [filter, setFilter] = useState('')
   const { isAuthenticated } = useAuth0()
+  const navigate = useNavigate()
 
   return (
     <AppBar
-      sx={{ background: '#EA8F79', color: '#9F609C', paddingLeft: '3px', paddingRight: '3px' }}
-      position="static"
+      sx={{
+        color: theme.palette.secondary.main,
+        backgroundColor: theme.palette.primary.main,
+      }}
+      position="fixed"
     >
       <Toolbar>
-        <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+        <Typography
+          variant="h6"
+          component="div"
+          sx={{ flexGrow: 1, color: theme.palette.secondary.main }}
+        >
           {t(TRANSLATION_KEYS.NAI)}
         </Typography>
         <ButtonGroup variant="text">
-          <Button color="inherit">
-            <Link to={'/'}>{t(TRANSLATION_KEYS.HOME)}</Link>
+          <Button sx={{ color: theme.palette.secondary.main }} onClick={() => navigate('/')}>
+            {t(TRANSLATION_KEYS.HOME)}
           </Button>
-          <Button title="Get more info" color="inherit">
-            <Link to={'/about'}>{t(TRANSLATION_KEYS.PRODUCTS)}</Link>
+          <Button
+            title="Get more info"
+            sx={{ color: theme.palette.secondary.main }}
+            onClick={() => navigate('/about')}
+          >
+            {t(TRANSLATION_KEYS.PRODUCTS)}
           </Button>
-          {isAuthenticated ? <Logout /> : <Login />}
+          <Button sx={{ color: theme.palette.secondary.main }} onClick={() => navigate('/details')}>
+            {t(TRANSLATION_KEYS.DETAILS)}
+          </Button>
+          {!isAuthenticated && <Login />}
         </ButtonGroup>
         <Box>
           <TextField
             id="standard-basic"
             label="Search..."
-            variant="standard"
+            variant="filled"
             value={filter}
-            onChange={e => setFilter(e.target.value)}
+            sx={{ color: theme.palette.secondary.main }}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFilter(e.target.value)}
           />
         </Box>
         <SwitchTheme />
-        <UserProfile />
+        <UserProfileMenu />
       </Toolbar>
     </AppBar>
   )
