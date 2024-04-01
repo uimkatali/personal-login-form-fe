@@ -3,6 +3,7 @@ import { useAuth0 } from '@auth0/auth0-react'
 import { Button, useTheme } from '@mui/material'
 import { useTranslation } from 'react-i18next'
 import LoginOutlinedIcon from '@mui/icons-material/LoginOutlined'
+import React from 'react'
 
 const Login = () => {
   const { t } = useTranslation()

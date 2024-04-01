@@ -1,7 +1,8 @@
 import { TRANSLATION_KEYS } from '../../i18n/translationKeys'
-import { User, useAuth0 } from '@auth0/auth0-react'
-import { Container, Grid, Typography } from '@mui/material'
+import { useAuth0 } from '@auth0/auth0-react'
+import { Container, Grid, Paper, Typography } from '@mui/material'
 import useTheme from '@mui/material/styles/useTheme'
+import React from 'react'
 import { useTranslation } from 'react-i18next'
 
 const ProfileContent = () => {
@@ -11,46 +12,66 @@ const ProfileContent = () => {
 
   return (
     <Container>
-      <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
-        <Grid
-          xs={6}
-          item
-          sx={{
-            display: 'flex',
-            flexDirection: 'row',
-            backgroundColor: theme.palette.primary.main,
-          }}
-        >
-          <Typography>{t(TRANSLATION_KEYS.NAME)}</Typography>
-          <Typography>{user && user.name}</Typography>
+      <Grid container spacing={4} padding={2}>
+        <Grid item sm={4}>
+          <Paper
+            sx={{
+              backgroundColor: theme.palette.primary.main,
+            }}
+          >
+            <Typography>{t(TRANSLATION_KEYS.NAME)}</Typography>
+            <Typography>{user?.name}</Typography>
+          </Paper>
         </Grid>
-        <Grid xs={6} item sx={{ display: 'flex', flexDirection: 'row' }}>
-          <Typography>{t(TRANSLATION_KEYS.NAME)}</Typography>
-          <Typography>{user && user.nickname}</Typography>
+        <Grid item sm={4}>
+          <Paper
+            sx={{
+              backgroundColor: theme.palette.primary.main,
+            }}
+          >
+            <Typography>{t(TRANSLATION_KEYS.NAME)}</Typography>
+            <Typography>{user?.name}</Typography>
+          </Paper>
         </Grid>
-        <Grid xs={6} item sx={{ display: 'flex', flexDirection: 'row' }}>
-          <Typography>{t(TRANSLATION_KEYS.NAME)}</Typography>
-          <Typography>{user && user.birthdate}</Typography>
+        <Grid item sm={4}>
+          <Paper
+            sx={{
+              backgroundColor: theme.palette.primary.main,
+            }}
+          >
+            <Typography>{t(TRANSLATION_KEYS.NAME)}</Typography>
+            <Typography>{user?.name}</Typography>
+          </Paper>
         </Grid>
-        <Grid xs={6} item sx={{ display: 'flex', flexDirection: 'row' }}>
-          <Typography>{t(TRANSLATION_KEYS.NAME)}</Typography>
-          <Typography>{user && user.email}</Typography>
+        <Grid item sm={4}>
+          <Paper
+            sx={{
+              backgroundColor: theme.palette.primary.main,
+            }}
+          >
+            <Typography>{t(TRANSLATION_KEYS.NAME)}</Typography>
+            <Typography>{user?.name}</Typography>
+          </Paper>
         </Grid>
-        <Grid xs={6} item sx={{ display: 'flex', flexDirection: 'row' }}>
-          <Typography>{t(TRANSLATION_KEYS.NAME)}</Typography>
-          <Typography>{user && user.email_verified}</Typography>
+        <Grid item sm={4}>
+          <Paper
+            sx={{
+              backgroundColor: theme.palette.primary.main,
+            }}
+          >
+            <Typography>{t(TRANSLATION_KEYS.NAME)}</Typography>
+            <Typography>{user?.name}</Typography>
+          </Paper>
         </Grid>
-        <Grid xs={6} item sx={{ display: 'flex', flexDirection: 'row' }}>
-          <Typography>{t(TRANSLATION_KEYS.NAME)}</Typography>
-          <Typography>{user && user.family_name}</Typography>
-        </Grid>
-        <Grid xs={6} item sx={{ display: 'flex', flexDirection: 'row' }}>
-          <Typography>{t(TRANSLATION_KEYS.NAME)}</Typography>
-          <Typography>{user && user.given_name}</Typography>
-        </Grid>
-        <Grid xs={6} item sx={{ display: 'flex', flexDirection: 'row' }}>
-          <Typography>{t(TRANSLATION_KEYS.NAME)}</Typography>
-          <Typography>{user && user.gender}</Typography>
+        <Grid item sm={4}>
+          <Paper
+            sx={{
+              backgroundColor: theme.palette.primary.main,
+            }}
+          >
+            <Typography>{t(TRANSLATION_KEYS.NAME)}</Typography>
+            <Typography>{user?.name}</Typography>
+          </Paper>
         </Grid>
       </Grid>
     </Container>

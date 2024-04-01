@@ -1,8 +1,10 @@
 import { useAuth0 } from '@auth0/auth0-react'
-import { Typography } from '@mui/material'
+import { Typography, useTheme } from '@mui/material'
+import React from 'react'
 
 export const Logout = () => {
   const { logout } = useAuth0()
+  const theme = useTheme()
   const handleLogout = async () => {
     await logout()
   }

@@ -1,5 +1,6 @@
 import { AppBar, Box, Button, ButtonGroup, TextField, Toolbar, Typography } from '@mui/material'
-import React, { useState } from 'react'
+import * as React from 'react'
+import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Login from '../Profile/Login'
 import UserProfileMenu from '../Profile/UserProfileMenu'
@@ -19,12 +20,10 @@ export default function Navbar() {
   return (
     <AppBar
       sx={{
-        paddingLeft: '3px',
-        paddingRight: '3px',
         color: theme.palette.secondary.main,
         backgroundColor: theme.palette.primary.main,
       }}
-      position="sticky"
+      position="fixed"
     >
       <Toolbar>
         <Typography

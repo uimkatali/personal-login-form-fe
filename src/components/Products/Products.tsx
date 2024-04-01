@@ -8,15 +8,15 @@ import {
   Grid,
   Typography,
 } from '@mui/material'
-import { useEffect, useState } from 'react'
 import { getAllUsers } from '../../api/users'
 import { UserData } from '../../types/user'
-import React from 'react'
 import { MOCK } from '../../MOCKDATA'
 import { useTranslation } from 'react-i18next'
 import { TRANSLATION_KEYS } from '../../i18n/translationKeys'
 import { generateUniqueKey } from '../../utils/generateUniqueKey'
 import useTheme from '@mui/material/styles/useTheme'
+import { useEffect, useState } from 'react'
+import React from 'react'
 
 interface AboutProps {
   filter: string
@@ -77,14 +77,14 @@ const Products = ({ filter }: AboutProps) => {
     </Card>
   )
 
-  const filteredData = usersList.filter(filteredUser =>
+  const filteredData = usersList.filter((filteredUser: { name: string }) =>
     filteredUser.name.toLowerCase().includes(filter.toLowerCase())
   )
 
   return (
-    <Grid container sx={{ width: '450px', margin: '0 auto' }}>
-      {(filteredData.length > 0 ? filteredData : mockData).map(user => (
-        <Grid item xs={4} sm={6} md={4} lg={3} key={generateUniqueKey()}>
+    <Grid container spacing={2}>
+      {(filteredData.length > 0 ? filteredData : mockData).map((user: UserData) => (
+        <Grid item xs={9 / 3} key={generateUniqueKey()}>
           {cardRender(user)}
         </Grid>
       ))}
