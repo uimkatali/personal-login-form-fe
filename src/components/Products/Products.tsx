@@ -56,7 +56,7 @@ const Products = ({ filter }: AboutProps) => {
           {user.name}
         </Typography>
       </CardContent>
-      <Divider orientation="horizontal" variant="middle" flexItem />
+      <Divider orientation="horizontal" variant="fullWidth" flexItem />
       <CardMedia component="img" height="128" loading="lazy" />
       <CardContent>
         <Typography gutterBottom variant="h6">
