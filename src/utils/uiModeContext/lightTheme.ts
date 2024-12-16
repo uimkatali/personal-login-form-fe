@@ -4,10 +4,10 @@ const lightTheme = createTheme({
   palette: {
     mode: 'light',
     primary: {
-      main: '#d5b4b4',
+      main: '#ffffff',
     },
     secondary: {
-      main: '#ebe3d5',
+      main: '#003da5',
     },
     error: {
       main: '#f44336',
@@ -22,13 +22,3 @@ const lightTheme = createTheme({
 })
 
 export default lightTheme
-
-// culori principale:
-//  #ccd3ca
-//  #ebe3d5
-//
-// culori secundare:
-//  #e3f4f4
-//  #d5b4b4
-//
-//

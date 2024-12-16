@@ -25,8 +25,8 @@ const App = () => {
       <Box sx={{ marginTop: '96px' }}>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/about" element={<Products filter={''} />} /> //TODO-Add slice for this
-          filter
+          <Route path="/about" element={<Products filter={''} />} />
+          //TODO-Add slice for the filter above (28 line)
           <Route path="/details" element={<Details />} />
           <Route path="/profile" element={<ProfileContent />} />
           <Route path="/login" element={<Login />} />

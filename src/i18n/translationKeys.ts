@@ -14,4 +14,5 @@ export const TRANSLATION_KEYS = {
   DESCRIPTION: 'description',
   BUYNOW: 'buynow',
   LOADING: 'loading',
+  EDIT: 'edit',
 }
