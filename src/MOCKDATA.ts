@@ -39,7 +39,6 @@ export const MOCK = [
 
 export const PROJECTSMOCK: ProjectsData[] = [
   {
-    _id: '607f1f77bcf86cd799439011',
     projectName: 'Project Phoenix',
     projectAcronym: 'PP',
     projectTeam: {
@@ -94,7 +93,6 @@ export const PROJECTSMOCK: ProjectsData[] = [
     },
   },
   {
-    _id: '607f1f77bcf86cd799439012',
     projectName: 'Project Titan',
     projectAcronym: 'PT',
     projectTeam: {
@@ -149,7 +147,6 @@ export const PROJECTSMOCK: ProjectsData[] = [
     },
   },
   {
-    _id: '607f1f77bcf86cd799439013',
     projectName: 'Project Zephyr',
     projectAcronym: 'PZ',
     projectTeam: {
@@ -204,7 +201,6 @@ export const PROJECTSMOCK: ProjectsData[] = [
     },
   },
   {
-    _id: '607f1f77bcf86cd799439014',
     projectName: 'Project Orion',
     projectAcronym: 'PO',
     projectTeam: {
@@ -259,7 +255,6 @@ export const PROJECTSMOCK: ProjectsData[] = [
     },
   },
   {
-    _id: '607f1f77bcf86cd799439015',
     projectName: 'Project Apollo',
     projectAcronym: 'PA',
     projectTeam: {

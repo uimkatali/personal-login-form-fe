@@ -1,5 +1,4 @@
 export interface ProjectsData {
-  _id: string
   projectName: string
   projectAcronym: string
   projectTeam: {

@@ -8,6 +8,7 @@ import Login from './components/Profile/Login'
 import { Logout } from './components/Profile/Logout'
 import { Details } from './Details/Details'
 import ProfileContent from './components/Profile/ProfileContent'
+import CreateProjectForm from './components/ProjectForm/CreateProjectForm'
 
 const App = () => {
   const theme = useTheme()
@@ -28,6 +29,7 @@ const App = () => {
           <Route path="/about" element={<Products filter={''} />} />
           //TODO-Add slice for the filter above (28 line)
           <Route path="/details" element={<Details />} />
+          <Route path="/createProject" element={<CreateProjectForm />} />
           <Route path="/profile" element={<ProfileContent />} />
           <Route path="/login" element={<Login />} />
           <Route path="/logout" element={<Logout />} />

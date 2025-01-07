@@ -47,6 +47,12 @@ export default function Navbar() {
           <Button sx={{ color: theme.palette.secondary.main }} onClick={() => navigate('/details')}>
             {t(TRANSLATION_KEYS.DETAILS)}
           </Button>
+          <Button
+            sx={{ color: theme.palette.secondary.main }}
+            onClick={() => navigate('/createProject')}
+          >
+            {t(TRANSLATION_KEYS.CREATE_PROJECT)}
+          </Button>
           {!isAuthenticated && <Login />}
         </ButtonGroup>
         {/* <Box>
