@@ -1,30 +1,39 @@
 import { useAuth0 } from '@auth0/auth0-react'
 import { TRANSLATION_KEYS } from '../../i18n/translationKeys'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import {
   Button,
   Card,
   CardActions,
   CardContent,
-  CardHeader,
   Chip,
-  Container,
   Grid,
   List,
-  ListItem,
-  ListItemText,
-  Paper,
   Typography,
   useTheme,
 } from '@mui/material'
-import { ProjectsData } from '@/types/projects'
+import { ProjectsData } from '../../types/projects'
 import { PROJECTSMOCK } from '../../MOCKDATA'
+import { useNavigate } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { selectProjectId } from '../../redux/selectors/projectsSelectors'
+import { setProjectId } from '../../redux/reducers/projectsReducers/projectSlice'
 
 export default function Home() {
   const { t } = useTranslation()
   const { user } = useAuth0()
   const theme = useTheme()
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
+  const selectedProjectId = useSelector(selectProjectId)
+
+  const handleDetailsClick = (newId: string) => {
+    dispatch(setProjectId(newId))
+    navigate(`/details/${newId}`)
+  }
+
+  useEffect(() => {}, [selectedProjectId])
 
   return (
     <>
@@ -55,7 +64,12 @@ export default function Home() {
               </Grid>
             </CardContent>
             <CardActions sx={{ display: 'flex', flexDirection: 'row-reverse' }}>
-              <Button sx={{ color: theme.palette.secondary.main }} size="small" variant="text">
+              <Button
+                sx={{ color: theme.palette.secondary.main }}
+                size="small"
+                variant="text"
+                onClick={() => handleDetailsClick(item._id)}
+              >
                 {t(TRANSLATION_KEYS.DETAILS)}
               </Button>
               <Button sx={{ color: theme.palette.secondary.main }} size="small" variant="text">

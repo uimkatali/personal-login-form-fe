@@ -22,15 +22,16 @@ const App = () => {
         }}
       />
       <Navbar />
-      <Box sx={{ marginTop: '96px' }}>
+      <Box sx={{ marginTop: '81px' }}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<Products filter={''} />} />
-          //TODO-Add slice for the filter above (28 line)
-          <Route path="/details" element={<Details />} />
+          //TODO-Add slice for the filter above 28 line
+          <Route path="/details/:id" element={<Details />} />
           <Route path="/profile" element={<ProfileContent />} />
           <Route path="/login" element={<Login />} />
           <Route path="/logout" element={<Logout />} />
+          <Route path="*" element={<></>} />
         </Routes>
       </Box>
     </Router>
