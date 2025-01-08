@@ -3,7 +3,7 @@ import Navbar from '../src/components/Navbar/Navbar'
 import React from 'react'
 
 export const metadata = {
-  title: 'NAI',
+  title: 'Project Manager P&G',
   description: 'Created by UIMasters',
 }
 

@@ -1,5 +1,5 @@
 import React, { ChangeEvent, useState } from 'react'
-import { TextField, Button, Typography, Grid, Paper } from '@mui/material'
+import { TextField, Button, Typography, Grid, Paper, useTheme } from '@mui/material'
 import { useDispatch } from 'react-redux'
 import { AppDispatch } from '@/redux/store/store'
 import { postProject } from '../../redux/reducers/projectReducers/projectSlice'
@@ -30,6 +30,8 @@ const CreateProjectForm: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>()
   // const { loading, error } = useSelector((state: any) => state.projects)
   const { t } = useTranslation()
+  const theme = useTheme()
+
   const [projectName, setProjectName] = useState('')
   const [projectAcronym, setProjectAcronym] = useState('')
   const [projectTeam, setProjectTeam] = useState<Team>({
@@ -72,8 +74,11 @@ const CreateProjectForm: React.FC = () => {
   return (
     <Paper style={{ padding: '20px', margin: '20px' }}>
       <Typography variant="h4">Create a Project</Typography>
-      <Grid container spacing={2}>
+      <Grid paddingLeft={8} paddingRight={8} container spacing={2}>
         <Grid item xs={12}>
+          <Typography variant="h6">
+            {t(TRANSLATION_KEYS.PROJECT_NAME).toLocaleUpperCase()}
+          </Typography>
           <TextField
             fullWidth
             label="Project Name"
@@ -82,6 +87,9 @@ const CreateProjectForm: React.FC = () => {
           />
         </Grid>
         <Grid item xs={12}>
+          <Typography variant="h6">
+            {t(TRANSLATION_KEYS.PROJECT_ACRONYM).toLocaleUpperCase()}
+          </Typography>
           <TextField
             fullWidth
             label="Acronym"
@@ -89,9 +97,9 @@ const CreateProjectForm: React.FC = () => {
             onChange={e => setProjectAcronym(e.target.value)}
           />
         </Grid>
-        <Typography variant="h4">{t(TRANSLATION_KEYS.TEAM)}</Typography>
+
         {Object.keys(projectTeam).map(key => (
-          <Grid item xs={12} spacing={2}>
+          <Grid item xs={12} gap={2}>
             <Typography variant="h6" key={key}>
               {t(`${TRANSLATION_KEYS[key as keyof typeof TRANSLATION_KEYS]}`).toLocaleUpperCase()}
             </Typography>

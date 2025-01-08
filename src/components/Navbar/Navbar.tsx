@@ -30,7 +30,7 @@ export default function Navbar() {
           component="div"
           sx={{ flexGrow: 1, color: theme.palette.secondary.main }}
         >
-          {t(TRANSLATION_KEYS.NAI)}
+          {t(TRANSLATION_KEYS.PROJECT_MANAGER_PG)}
         </Typography>
         <ButtonGroup variant="text">
           <Button sx={{ color: theme.palette.secondary.main }} onClick={() => navigate('/')}>

@@ -1,7 +1,7 @@
 export const TRANSLATION_KEYS = {
   HOME: 'home',
   HELLO: 'hello',
-  NAI: 'nai',
+  PROJECT_MANAGER_PG: 'Project Manager P&G',
   PRODUCTS: 'products',
   DARK: 'dark',
   LIGHT: 'light',
@@ -29,4 +29,6 @@ export const TRANSLATION_KEYS = {
   qaLeader: 'QA leader',
   itotLeader: 'IT/OT leader',
   TEAM: 'Team',
+  PROJECT_NAME: 'Project name',
+  PROJECT_ACRONYM: 'Project acronym',
 }
