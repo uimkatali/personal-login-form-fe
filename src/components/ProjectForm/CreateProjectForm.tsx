@@ -73,7 +73,9 @@ const CreateProjectForm: React.FC = () => {
 
   return (
     <Paper style={{ padding: '20px', margin: '20px' }}>
-      <Typography variant="h4">Create a Project</Typography>
+      <Typography sx={{ padding: '8' }} variant="h4">
+        {t(TRANSLATION_KEYS.CREATE_A_PROJECT).toLocaleUpperCase()}
+      </Typography>
       <Grid paddingLeft={8} paddingRight={8} container spacing={2}>
         <Grid item xs={12}>
           <Typography variant="h6">
@@ -99,36 +101,45 @@ const CreateProjectForm: React.FC = () => {
         </Grid>
 
         {Object.keys(projectTeam).map(key => (
-          <Grid item xs={12} gap={2}>
+          <Grid sx={{ paddingTop: '8', paddingBottom: '8' }} item xs={12}>
             <Typography variant="h6" key={key}>
               {t(`${TRANSLATION_KEYS[key as keyof typeof TRANSLATION_KEYS]}`).toLocaleUpperCase()}
             </Typography>
-            <TextField
-              fullWidth
-              label={
-                projectTeam[key as keyof Team].roleName
-                  ? projectTeam[key as keyof Team].roleName
-                  : 'Role Name'
-              }
-              variant="outlined"
-              value={projectTeam[key as keyof Team].roleName}
-              onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                handleTeamInput(e, key as keyof Team, 'roleName')
-              }
-            />
-            <TextField
-              fullWidth
-              label={
-                projectTeam[key as keyof Team].memberName
-                  ? projectTeam[key as keyof Team].memberName
-                  : 'Member Name'
-              }
-              variant="outlined"
-              value={projectTeam[key as keyof Team].memberName}
-              onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                handleTeamInput(e, key as keyof Team, 'memberName')
-              }
-            />
+            <Paper
+              elevation={0}
+              sx={{
+                display: 'flex',
+                flexDirection: 'row',
+                alignContent: 'space-between',
+              }}
+            >
+              <TextField
+                fullWidth
+                label={
+                  projectTeam[key as keyof Team].roleName
+                    ? projectTeam[key as keyof Team].roleName
+                    : 'Role Name'
+                }
+                variant="outlined"
+                value={projectTeam[key as keyof Team].roleName}
+                onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                  handleTeamInput(e, key as keyof Team, 'roleName')
+                }
+              />
+              <TextField
+                fullWidth
+                label={
+                  projectTeam[key as keyof Team].memberName
+                    ? projectTeam[key as keyof Team].memberName
+                    : 'Member Name'
+                }
+                variant="outlined"
+                value={projectTeam[key as keyof Team].memberName}
+                onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                  handleTeamInput(e, key as keyof Team, 'memberName')
+                }
+              />
+            </Paper>
           </Grid>
         ))}
       </Grid>

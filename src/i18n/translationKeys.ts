@@ -31,4 +31,5 @@ export const TRANSLATION_KEYS = {
   TEAM: 'Team',
   PROJECT_NAME: 'Project name',
   PROJECT_ACRONYM: 'Project acronym',
+  CREATE_A_PROJECT: 'Create a Project',
 }
