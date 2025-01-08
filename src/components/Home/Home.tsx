@@ -1,4 +1,3 @@
-import { useAuth0 } from '@auth0/auth0-react'
 import { TRANSLATION_KEYS } from '../../i18n/translationKeys'
 import React from 'react'
 import { useTranslation } from 'react-i18next'
@@ -7,14 +6,9 @@ import {
   Card,
   CardActions,
   CardContent,
-  CardHeader,
   Chip,
-  Container,
   Grid,
   List,
-  ListItem,
-  ListItemText,
-  Paper,
   Typography,
   useTheme,
 } from '@mui/material'
@@ -23,7 +17,7 @@ import { PROJECTSMOCK } from '../../MOCKDATA'
 
 export default function Home() {
   const { t } = useTranslation()
-  const { user } = useAuth0()
+  // const { user } = useAuth0()
   const theme = useTheme()
 
   return (

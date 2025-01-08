@@ -1,16 +1,38 @@
-import React, { useState } from 'react'
+import React, { ChangeEvent, useState } from 'react'
 import { TextField, Button, Typography, Grid, Paper } from '@mui/material'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { AppDispatch } from '@/redux/store/store'
 import { postProject } from '../../redux/reducers/projectReducers/projectSlice'
+import { ProjectsData, Team, TeamMemberDetails } from '@/types/projects'
+import { useTranslation } from 'react-i18next'
+import { TRANSLATION_KEYS } from '../../i18n/translationKeys'
+
+const initialTeam: ProjectsData = {
+  projectName: '',
+  projectAcronym: '',
+  projectTeam: {
+    projectSponsor: { roleName: '', memberName: '' },
+    projectManager: { roleName: '', memberName: '' },
+    technicalEngineer: { roleName: '', memberName: '' },
+    electricalEngineer: { roleName: '', memberName: '' },
+    mechanicalTechnicial: { roleName: '', memberName: '' },
+    startUpTTandTLeader: { roleName: '', memberName: '' },
+    snoLeader: { roleName: '', memberName: '' },
+    imPillarCoach: { roleName: '', memberName: '' },
+    costEngineer: { roleName: '', memberName: '' },
+    pkPlatformPCISDirector: { roleName: '', memberName: '' },
+    qaLeader: { roleName: '', memberName: '' },
+    itotLeader: { roleName: '', memberName: '' },
+  },
+}
 
 const CreateProjectForm: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>()
-  const { loading, error } = useSelector((state: any) => state.projects)
-
+  // const { loading, error } = useSelector((state: any) => state.projects)
+  const { t } = useTranslation()
   const [projectName, setProjectName] = useState('')
   const [projectAcronym, setProjectAcronym] = useState('')
-  const [team, setTeam] = useState({
+  const [projectTeam, setProjectTeam] = useState<Team>({
     projectSponsor: { roleName: '', memberName: '' },
     projectManager: { roleName: '', memberName: '' },
     technicalEngineer: { roleName: '', memberName: '' },
@@ -25,11 +47,24 @@ const CreateProjectForm: React.FC = () => {
     itotLeader: { roleName: '', memberName: '' },
   })
 
+  const handleTeamInput = (
+    event: ChangeEvent<HTMLInputElement>,
+    key: keyof Team,
+    field: keyof TeamMemberDetails
+  ) => {
+    const { value } = event.target
+
+    setProjectTeam(prevData => ({
+      ...prevData,
+      [key]: { ...prevData[key], [field]: value },
+    }))
+  }
+
   const handleSubmit = () => {
     const projectData = {
       projectName,
       projectAcronym,
-      projectTeam: team,
+      projectTeam,
     }
     dispatch(postProject(projectData))
   }
@@ -46,6 +81,48 @@ const CreateProjectForm: React.FC = () => {
             onChange={e => setProjectName(e.target.value)}
           />
         </Grid>
+        <Grid item xs={12}>
+          <TextField
+            fullWidth
+            label="Acronym"
+            value={projectAcronym ? projectAcronym : ''}
+            onChange={e => setProjectAcronym(e.target.value)}
+          />
+        </Grid>
+        <Typography variant="h4">{t(TRANSLATION_KEYS.TEAM)}</Typography>
+        {Object.keys(projectTeam).map(key => (
+          <Grid item xs={12} spacing={2}>
+            <Typography variant="h6" key={key}>
+              {t(`${TRANSLATION_KEYS[key as keyof typeof TRANSLATION_KEYS]}`).toLocaleUpperCase()}
+            </Typography>
+            <TextField
+              fullWidth
+              label={
+                projectTeam[key as keyof Team].roleName
+                  ? projectTeam[key as keyof Team].roleName
+                  : 'Role Name'
+              }
+              variant="outlined"
+              value={projectTeam[key as keyof Team].roleName}
+              onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                handleTeamInput(e, key as keyof Team, 'roleName')
+              }
+            />
+            <TextField
+              fullWidth
+              label={
+                projectTeam[key as keyof Team].memberName
+                  ? projectTeam[key as keyof Team].memberName
+                  : 'Member Name'
+              }
+              variant="outlined"
+              value={projectTeam[key as keyof Team].memberName}
+              onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                handleTeamInput(e, key as keyof Team, 'memberName')
+              }
+            />
+          </Grid>
+        ))}
       </Grid>
       <Button
         variant="contained"
