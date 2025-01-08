@@ -83,6 +83,7 @@ const CreateProjectForm: React.FC = () => {
           </Typography>
           <TextField
             fullWidth
+            variant="outlined"
             label="Project Name"
             value={projectName ? projectName : ''}
             onChange={e => setProjectName(e.target.value)}
@@ -94,6 +95,7 @@ const CreateProjectForm: React.FC = () => {
           </Typography>
           <TextField
             fullWidth
+            variant="outlined"
             label="Acronym"
             value={projectAcronym ? projectAcronym : ''}
             onChange={e => setProjectAcronym(e.target.value)}
