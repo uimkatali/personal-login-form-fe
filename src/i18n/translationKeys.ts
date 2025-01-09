@@ -10,6 +10,7 @@ export const TRANSLATION_KEYS = {
   LOGOUT: 'logout',
   PROFILE: 'profile',
   DETAILS: 'details',
+  SUBMIT: 'submit',
   NAME: 'name',
   DESCRIPTION: 'description',
   BUYNOW: 'buynow',
@@ -32,4 +33,5 @@ export const TRANSLATION_KEYS = {
   PROJECT_NAME: 'Project name',
   PROJECT_ACRONYM: 'Project acronym',
   CREATE_A_PROJECT: 'Create a Project',
+  ADD_TEAM_MEMBER: 'Add team member',
 }

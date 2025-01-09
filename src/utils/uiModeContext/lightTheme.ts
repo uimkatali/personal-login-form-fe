@@ -18,6 +18,9 @@ const lightTheme = createTheme({
     success: {
       main: '#4caf50',
     },
+    text: {
+      primary: '#003da5',
+    },
   },
 })
 

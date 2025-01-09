@@ -18,6 +18,9 @@ const darkTheme = createTheme({
     success: {
       main: '#4caf50',
     },
+    text: {
+      primary: '#ffffff',
+    },
   },
 })
 

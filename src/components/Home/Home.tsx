@@ -28,7 +28,6 @@ export default function Home() {
             sx={{
               marginBottom: 1,
               color: theme.palette.secondary.main,
-              background: theme.palette.primary.main,
             }}
             elevation={4}
           >
