@@ -3,28 +3,9 @@ import { TextField, Button, Typography, Grid, Paper, useTheme } from '@mui/mater
 import { useDispatch } from 'react-redux'
 import { AppDispatch } from '@/redux/store/store'
 import { postProject } from '../../redux/reducers/projectReducers/projectSlice'
-import { ProjectsData, Team, TeamMemberDetails } from '@/types/projects'
+import { Team, TeamMemberDetails } from '@/types/projects'
 import { useTranslation } from 'react-i18next'
 import { TRANSLATION_KEYS } from '../../i18n/translationKeys'
-
-const initialTeam: ProjectsData = {
-  projectName: '',
-  projectAcronym: '',
-  projectTeam: {
-    projectSponsor: { roleName: '', memberName: '' },
-    projectManager: { roleName: '', memberName: '' },
-    technicalEngineer: { roleName: '', memberName: '' },
-    electricalEngineer: { roleName: '', memberName: '' },
-    mechanicalTechnicial: { roleName: '', memberName: '' },
-    startUpTTandTLeader: { roleName: '', memberName: '' },
-    snoLeader: { roleName: '', memberName: '' },
-    imPillarCoach: { roleName: '', memberName: '' },
-    costEngineer: { roleName: '', memberName: '' },
-    pkPlatformPCISDirector: { roleName: '', memberName: '' },
-    qaLeader: { roleName: '', memberName: '' },
-    itotLeader: { roleName: '', memberName: '' },
-  },
-}
 
 const CreateProjectForm: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>()
