@@ -28,12 +28,8 @@ const initialTeam: ProjectsData = {
 
 const CreateProjectForm: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>()
-  // const { loading, error } = useSelector((state: any) => state.projects)
   const { t } = useTranslation()
   const theme = useTheme()
-
-  const [openModal, setOpenModal] = useState(false)
-  const [newRole, setNewRole] = useState('')
 
   const [projectName, setProjectName] = useState('')
   const [projectAcronym, setProjectAcronym] = useState('')
@@ -72,10 +68,6 @@ const CreateProjectForm: React.FC = () => {
       projectTeam,
     }
     dispatch(postProject(projectData))
-  }
-
-  const handleAddTeamMember = () => {
-    setOpenModal(true)
   }
 
   return (
