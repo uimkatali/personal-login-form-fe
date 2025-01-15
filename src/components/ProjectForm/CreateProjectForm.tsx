@@ -169,18 +169,6 @@ const CreateProjectForm: React.FC = () => {
         >
           {t(TRANSLATION_KEYS.SUBMIT).toLocaleUpperCase()}
         </Button>
-        <Button
-          variant="text"
-          sx={{
-            fontSize: 16,
-            color: theme.palette.secondary.main,
-          }}
-          onClick={() => {
-            handleAddTeamMember()
-          }}
-        >
-          {t(TRANSLATION_KEYS.ADD_TEAM_MEMBER).toLocaleUpperCase()}
-        </Button>
       </Paper>
     </Paper>
   )
