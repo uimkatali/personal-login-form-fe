@@ -19,7 +19,7 @@ root.render(
         <Auth0Provider
           domain="dev-c1za0lb4jcv78nl8.us.auth0.com"
           clientId="xLdfULaYLLtAStTyzTUQCqaNaWWBvUsP"
-          authorizationParams={{ redirect_uri: window.location.origin }}
+          authorizationParams={{ redirect_uri: window.location.origin, audience: '', scope: '' }}
         >
           <Provider store={store}>
             <UIModeProvider>

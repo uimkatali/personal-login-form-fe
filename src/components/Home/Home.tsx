@@ -14,22 +14,25 @@ import {
 } from '@mui/material'
 import { ProjectsData } from '@/types/projects'
 import { PROJECTSMOCK } from '../../MOCKDATA'
+import { useAuth } from '../../hooks/useAuth'
 
 export default function Home() {
   const { t } = useTranslation()
-  // const { user } = useAuth0()
+  const { isAdmin, isAuthenticated } = useAuth()
   const theme = useTheme()
 
   return (
     <>
       <List sx={{ padding: 1, position: 'relative' }}>
-        {PROJECTSMOCK.map((item: ProjectsData) => (
+        {PROJECTSMOCK.map((item: ProjectsData, key) => (
           <Card
             sx={{
               marginBottom: 1,
               color: theme.palette.secondary.main,
+              background: theme.palette.primary.main,
             }}
             elevation={4}
+            key={key}
           >
             <CardContent>
               <Typography variant="h5">{item.projectName}</Typography>
@@ -51,9 +54,16 @@ export default function Home() {
               <Button sx={{ color: theme.palette.secondary.main }} size="small" variant="text">
                 {t(TRANSLATION_KEYS.DETAILS)}
               </Button>
-              <Button sx={{ color: theme.palette.secondary.main }} size="small" variant="text">
-                {t(TRANSLATION_KEYS.EDIT)}
-              </Button>
+              {(isAdmin || isAuthenticated) && (
+                <Button
+                  onClick={() => null}
+                  sx={{ color: theme.palette.secondary.main }}
+                  size="small"
+                  variant="text"
+                >
+                  {t(TRANSLATION_KEYS.EDIT)}
+                </Button>
+              )}
             </CardActions>
           </Card>
         ))}
